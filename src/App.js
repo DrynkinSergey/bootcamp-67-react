@@ -1,19 +1,18 @@
-import logo from './logo.svg'
-import './App.css'
+import { Header } from './components/Header'
+import { List } from './components/List'
 
 function App() {
+	const films = [
+		{ id: 5213, title: 'Test' },
+		{ id: 2123, title: 'Taxi' },
+		{ id: 11231, title: 'Terminator' },
+		{ id: 41231, title: 'Dr. House' },
+		{ id: 'dsfadsfsf', title: 'Harry Potter' },
+	]
 	return (
-		<div className='App'>
-			<h2>dsfasfsd</h2>
-			<header className='App-header'>
-				<img src={logo} className='App-logo' alt='logo' />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
-					Learn React
-				</a>
-			</header>
+		<div>
+			<Header />
+			<List data={films} title='Section Films' />
 		</div>
 	)
 }
