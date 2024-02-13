@@ -1,8 +1,18 @@
-export const Modal = ({ children, title }) => {
+import { CloseButton, ModalContent, ModalWrapper } from './Modal.styled'
+
+const Modal = ({ children }) => {
 	return (
-		<div>
-			<h1 className='title'>{title}</h1>
-			{children}
-		</div>
+		<ModalWrapper>
+			<ModalContent>
+				<>
+					<h1>Modal</h1>
+					<hr />
+				</>
+				<CloseButton>×</CloseButton>
+				{children}
+			</ModalContent>
+		</ModalWrapper>
 	)
 }
+
+export default Modal
