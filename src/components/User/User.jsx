@@ -1,16 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
+import s from './User.module.css'
+
 export const User = ({ user, message }) => {
 	return (
-		<div>
-			<h1>User</h1>
+		<div className={s.wrapper}>
+			<h1 className={s.title}>User</h1>
 			{message && <h2>{message}</h2>}
-			<img src={user.image} alt={user.lastName} />
-			<h2>
+			<div className={s.image}>
+				<img src={user.image} alt={user.lastName} />
+			</div>
+
+			<h2 className={s.name}>
 				{user.firstName} {user.lastName}
 			</h2>
-			<p>Age: {user.age}</p>
+			<p className={s.age}>Age: {user.age}</p>
 			<p>Gender: {user.gender}</p>
+
 			<p>Email: {user.email}</p>
 		</div>
 	)

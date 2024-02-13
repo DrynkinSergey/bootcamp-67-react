@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types'
-
+import s from './List.module.css'
 export const List = ({ data = [], title }) => {
 	return (
-		<div>
+		<div className={s.wrapper}>
 			<h2>{title}</h2>
-			<ul>
-				{data.map(item => (
-					<li key={item.id}>
-						{item.title} <button>Delete</button>
+			<ul className={s.list}>
+				{data.map((item, idx) => (
+					<li className={s.item} key={item.id}>
+						<span>{item.title}</span> <button>Delete</button>
 					</li>
 				))}
 			</ul>

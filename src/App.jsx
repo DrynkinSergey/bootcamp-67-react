@@ -1,9 +1,9 @@
 import { Header } from './components/Header'
-import { List } from './components/List'
+import { List } from './components/List/List'
 import { Modal } from './components/Modal/Modal'
 import { User } from './components/User/User'
 import { films, goods } from './components/data'
-
+import './index.css'
 import userJson from './assets/user.json'
 
 function App() {
@@ -23,9 +23,7 @@ function App() {
 	return (
 		<div>
 			<Header message='Message from app' headerTitle='React' />
-
 			<User user={userJson} />
-
 			{selectedTab === 'films' ? (
 				<List data={films} title='Section Films' />
 			) : (
