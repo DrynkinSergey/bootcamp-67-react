@@ -4,23 +4,34 @@ import { Flex, FlexContainer, StyledButton, StyledCounter } from './Counter.styl
 export class Counter extends React.Component {
 	state = {
 		counter: 1,
+		step: 1,
+	}
+
+	handleChangeStep = e => {
+		console.log(e.target.value)
+		this.setState({ step: +e.target.value })
 	}
 
 	handlePlusClick = () => {
 		// this.state.counter = 2 - НЕ МОЖНА ПИСАТИ ЗМІНУ СТЕЙТУ
-
-		this.setState({ counter: this.state.counter + 1 })
+		// this.setState({ counter: this.state.counter + 1 }, () => {
+		// 	console.log(this.state.counter)
+		// })
+		this.setState(prev => ({ counter: prev.counter + prev.step }))
 	}
 	handleMinusClick = () => {
 		if (this.state.counter !== 0) {
-			this.setState({ counter: this.state.counter - 1 })
+			// this.setState({ counter: this.state.counter - 1 })
+			// this.setState({ counter: this.state.counter - 1 })
+			// this.setState({ counter: this.state.counter - 1 })
+
+			this.setState(prev => ({ counter: prev.counter - prev.step }))
 		} else {
 			alert('Counter less than 0')
 		}
 	}
 	handleResetClick = event => {
-		console.log(event.target.innerHTML)
-		event.target.innerHTML = 'Hello base event'
+		this.setState({ counter: 0, step: 1 })
 	}
 
 	render() {
@@ -28,6 +39,7 @@ export class Counter extends React.Component {
 			<FlexContainer>
 				<StyledCounter>
 					<h1>{this.state.counter}</h1>
+					<input type='number' value={this.state.step} onChange={this.handleChangeStep} />
 					<Flex>
 						<StyledButton onClick={this.handleMinusClick}>minus</StyledButton>
 						<StyledButton onClick={this.handleResetClick}>reset</StyledButton>
