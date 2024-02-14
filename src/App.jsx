@@ -9,8 +9,8 @@ const App = () => {
 		<div>
 			{/* <StyledPreview /> */}
 			{/* <Counter /> */}
-			{/* <TodoList /> */}
-			<ColorPicker colors={colors} message='Hello' />
+			<TodoList />
+			{/* <ColorPicker colors={colors} message='Hello' /> */}
 		</div>
 	)
 }
