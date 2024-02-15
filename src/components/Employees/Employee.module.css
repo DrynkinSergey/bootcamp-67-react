@@ -74,3 +74,12 @@
 	margin-right: 10px;
   background-color: green;
 }
+.wantToWork{
+	background-color: lightgreen;
+}
+.dontWork{
+	background-color: lightcoral;
+}
+.test{
+	font-style: italic;
+}
