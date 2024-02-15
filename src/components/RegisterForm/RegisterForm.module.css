@@ -45,6 +45,10 @@
 		background-color: #091ec2;
 		color: white;
 	}
+	&:disabled {
+		background-color: red;
+		color: white;
+	}
 }
 .flex{
   display: flex;

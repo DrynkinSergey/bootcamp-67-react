@@ -13,7 +13,8 @@ const App = () => {
 	}
 	return (
 		<>
-			<RegisterFormUncontrolled register={handleRegister} />
+			<RegisterForm register={handleRegister} />
+			{/* <RegisterFormUncontrolled register={handleRegister} /> */}
 			{/* <Employee /> */}
 		</>
 	)
