@@ -1,23 +1,18 @@
-import { RegisterForm } from './components/RegisterForm/RegisterForm'
+import React from 'react'
 import { Employee } from './components/Employees/Employee'
 import './index.css'
-import { RegisterFormUncontrolled } from './components/RegisterForm/RegisterFormUncontrolled'
-const App = () => {
-	const handleRegister = data => {
-		console.log('Send data...')
-		console.log('...')
-		setTimeout(() => {
-			console.log(data)
-			console.log('register is success')
-		}, 2000)
+import { Header } from './components/Header/Header'
+import { Counter } from './components/Counter/Counter'
+class App extends React.Component {
+	render() {
+		return (
+			<>
+				<Header />
+				{/* <Employee /> */}
+				<Counter />
+			</>
+		)
 	}
-	return (
-		<>
-			{/* <RegisterForm register={handleRegister} /> */}
-			{/* <RegisterFormUncontrolled register={handleRegister} /> */}
-			<Employee />
-		</>
-	)
 }
 
 export default App
