@@ -3,13 +3,30 @@ import { CloseButton, ModalContent, ModalWrapper } from './Modal.styled'
 import { toast } from 'react-toastify'
 
 class Modal extends React.Component {
+	intervalId = null
+	timeoutId = null
+
 	componentDidMount() {
+		document.body.style.overflowY = 'hidden'
+
 		console.log('Modal is Open')
 		document.addEventListener('keydown', this.handleKeyDown)
+
+		this.timeoutId = setTimeout(() => {
+			console.log('Hello')
+		}, 3000)
+
+		this.intervalId = setInterval(() => {
+			console.log(new Date().toLocaleTimeString())
+		}, 1000)
 	}
 	componentWillUnmount() {
 		// toast.info('Modal is closed')
+		document.body.style.overflowY = 'auto'
+
 		document.removeEventListener('keydown', this.handleKeyDown)
+		clearInterval(this.intervalId)
+		clearTimeout(this.timeoutId)
 	}
 
 	handleKeyDown = e => {

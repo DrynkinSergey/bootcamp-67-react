@@ -5,9 +5,29 @@ export class ColorPicker extends React.Component {
 	state = {
 		currentColor: 'white',
 	}
+	//  a = {
+	// 	user:{
+	// 		userdata:{
+	// 			name:{
+	// 				lastname: 'Petrov'
+	// 			}
+	// 		},
+	// 		job:{
+
+	// 		}
+	// 	}
+	// }
+
+	componentDidUpdate(prevProps, prevState) {
+		console.log('Update')
+	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextState.currentColor !== this.state.currentColor // true || false !
+	}
 
 	handleChangeColor = color => {
-		console.log(color)
+		// console.log(color)
 		this.setState({ currentColor: color })
 	}
 	render() {

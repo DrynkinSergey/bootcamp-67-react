@@ -4,7 +4,9 @@ import './index.css'
 import { Header } from './components/Header/Header'
 import { Counter } from './components/Counter/Counter'
 import { ErrorBoundary } from './components/ErrorBoundary'
+import { ColorPicker } from './components/ColorPicker/ColorPicker'
 import Modal from './components/Modal/Modal'
+import colors from './assets/colors.json'
 class App extends React.Component {
 	state = {
 		isOpen: false,
@@ -31,13 +33,14 @@ class App extends React.Component {
 		return (
 			<>
 				<Header openModal={this.handleOpenModal} />
-				<Employee />
+				<ColorPicker colors={colors} />
+				{/* <Employee /> */}
 				{/* <Counter /> */}
-				{isOpen && (
+				{/* {isOpen && (
 					<Modal closeModal={this.handleToggleModal}>
 						<h2>Modal text</h2>
 					</Modal>
-				)}
+				)} */}
 			</>
 		)
 	}
