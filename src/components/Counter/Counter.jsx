@@ -7,6 +7,25 @@ export class Counter extends React.Component {
 		step: 1,
 	}
 
+	componentDidMount() {
+		console.log('Компонент є на сторінці')
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState.counter !== this.state.counter) {
+			console.log('Counter was updated!')
+		}
+		if (prevState.step !== this.state.step) {
+			console.log('Step was updated!')
+		}
+		if (prevState.counter === 4) {
+			console.log('Counter was 4')
+		}
+		if (this.state.counter === 6) {
+			this.setState({ counter: 1 })
+		}
+	}
+
 	handleChangeStep = e => {
 		this.setState({ step: +e.target.value })
 	}

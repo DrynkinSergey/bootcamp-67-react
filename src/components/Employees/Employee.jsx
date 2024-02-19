@@ -2,6 +2,8 @@ import { EmployeesFilter } from './EmployeesFilter'
 import { EmployeeList } from './EmployeeList'
 import userData from './../../assets/users.json'
 import React from 'react'
+import { toast } from 'react-toastify'
+import { USERS_KEY } from './consts'
 
 export class Employee extends React.Component {
 	state = {
@@ -9,6 +11,21 @@ export class Employee extends React.Component {
 		searchValue: '',
 		isAvailable: false,
 		isActiveSkill: 'all',
+	}
+
+	componentDidMount() {
+		const users = JSON.parse(localStorage.getItem(USERS_KEY))
+		console.log(users)
+		if (users?.length) {
+			this.setState({ users })
+			toast.success('Users downloaded from ls')
+		}
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState.users !== this.state.users) {
+			localStorage.setItem(USERS_KEY, JSON.stringify(this.state.users))
+		}
 	}
 
 	handleUpdateUser = id => {
