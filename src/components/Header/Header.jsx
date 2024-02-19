@@ -2,11 +2,11 @@ import React from 'react'
 import { StyledButton } from '../Counter/Counter.styled'
 import styled from 'styled-components'
 
-export const Header = () => {
+export const Header = ({ openModal }) => {
 	return (
 		<StyledHeader>
 			<h1>Lifecycles</h1>
-			<StyledButton $border='2px solid black' $size='1.5rem'>
+			<StyledButton onClick={openModal} $border='2px solid black' $size='1.5rem'>
 				Open modal
 			</StyledButton>
 		</StyledHeader>
