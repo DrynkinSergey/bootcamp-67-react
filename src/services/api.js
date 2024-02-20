@@ -8,7 +8,6 @@ export const fetchPosts = async configParams => {
 		params: {
 			limit: 4,
 			skip: 0,
-			api_key: 'sd23adsfas1j32fafsdf',
 			...configParams,
 		},
 	})
@@ -16,7 +15,7 @@ export const fetchPosts = async configParams => {
 }
 
 export const fetchPostsByQuery = async configParams => {
-	const { data } = await axios.get('posts2/search', {
+	const { data } = await axios.get('posts/search', {
 		params: {
 			limit: 4,
 			...configParams,

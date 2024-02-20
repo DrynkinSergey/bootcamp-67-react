@@ -18,17 +18,17 @@ export class Posts extends React.Component {
 		content: null,
 	}
 
-	async componentDidMount() {
-		try {
-			this.setState({ loading: true, error: null })
-			const { posts, total } = await fetchPosts()
-			this.setState({ items: posts, totalPosts: total })
-		} catch (error) {
-			this.setState({ error })
-		} finally {
-			this.setState({ loading: false })
-		}
-	}
+	// async componentDidMount() {
+	// 	try {
+	// 		this.setState({ loading: true, error: null })
+	// 		const { posts, total } = await fetchPosts()
+	// 		this.setState({ items: posts, totalPosts: total })
+	// 	} catch (error) {
+	// 		this.setState({ error })
+	// 	} finally {
+	// 		this.setState({ loading: false })
+	// 	}
+	// }
 
 	async componentDidUpdate(prevProps, prevState) {
 		if (prevState.skip !== this.state.skip || prevState.query !== this.state.query) {
