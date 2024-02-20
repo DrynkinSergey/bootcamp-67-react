@@ -16,7 +16,7 @@ export const fetchPosts = async configParams => {
 }
 
 export const fetchPostsByQuery = async configParams => {
-	const { data } = await axios.get('posts/search', {
+	const { data } = await axios.get('posts2/search', {
 		params: {
 			limit: 4,
 			...configParams,

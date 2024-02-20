@@ -47,3 +47,14 @@
   display: flex;
   justify-content: center;
 }
+.tagsModal{
+  display: flex;
+  gap:20px;
+  li{
+    list-style: none;
+    border: 1px solid black;
+    padding: 2px;
+    border-radius: 12px;
+    
+  }
+}
