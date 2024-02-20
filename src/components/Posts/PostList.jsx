@@ -1,12 +1,12 @@
 import React from 'react'
 import { PostCard } from './PostCard'
 import s from './Posts.module.css'
-export const PostList = () => {
+export const PostList = ({ posts }) => {
 	return (
 		<ul className={s.listWrapper}>
-			<PostCard />
-			<PostCard />
-			<PostCard />
+			{posts.map(post => (
+				<PostCard key={post.id} {...post} />
+			))}
 		</ul>
 	)
 }
