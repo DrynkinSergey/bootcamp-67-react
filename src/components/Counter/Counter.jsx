@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Flex, FlexContainer, StyledButton, StyledCounter } from './Counter.styled'
 
 export const Counter = () => {
@@ -16,6 +16,25 @@ export const Counter = () => {
 
 	const [counter, setCounter] = useState(1)
 	const [step, setStep] = useState(1)
+
+	// Виконається еффект лише один раз, тому що пустий массив залежностей!
+	// analog componentDidMount
+	useEffect(() => {
+		console.log('Hello world')
+	}, [])
+	// Виконуєть перший раз, а також всі наступні, коли ми чіпаємо змінну з залежностей
+	// analog componentDidUpdate
+	useEffect(() => {
+		console.log('Counter was changed to:', counter)
+	}, [counter])
+
+	useEffect(() => {
+		console.log('Step was changed to:', step)
+	}, [step])
+
+	useEffect(() => {
+		console.log(counter + step)
+	}, [counter, step])
 
 	const handleChangeStep = e => {
 		// this.setState({ step: +e.target.value })

@@ -14,9 +14,9 @@ class App extends React.Component {
 				<Header openModal={this.handleOpenModal} />
 				{/* <Counter /> */}
 				{/* <ColorPicker colors={colors} /> */}
-				<TodoList />
+				{/* <TodoList /> */}
 				{/* <Employee /> */}
-				{/* <Posts /> */}
+				<Posts />
 			</>
 		)
 	}
