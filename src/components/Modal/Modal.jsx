@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { CloseButton, ModalContent, ModalWrapper } from './Modal.styled'
-import { toast } from 'react-toastify'
 
 const Modal = ({ children, closeModal }) => {
+	// const a = document.querySelector('button')
+
 	useEffect(() => {
 		const handleKeyDown = e => {
 			console.log(e.key)

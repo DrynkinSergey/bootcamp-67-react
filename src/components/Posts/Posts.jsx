@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { PostList } from './PostList'
 import { SearchForm } from './SearchForm'
 import s from './Posts.module.css'
@@ -16,6 +16,13 @@ export const Posts = () => {
 	const [query, setQuery] = useState('')
 	const [isOpen, setIsOpen] = useState(false)
 	const [content, setContent] = useState(null)
+
+	const renderCountRef = useRef(0)
+
+	useEffect(() => {
+		renderCountRef.current += 1
+		console.log('Render count is:', renderCountRef.current)
+	})
 
 	useEffect(() => {
 		const getData = async () => {
@@ -61,9 +68,16 @@ export const Posts = () => {
 		<div>
 			<h1 className={s.title}>Posts</h1>
 			<SearchForm handleSetQuery={handleSetQuery} />
-
+			{/* <button
+				onClick={() => {
+					renderCountRef.current += 1
+				}}
+			>
+				Render count {renderCountRef.current}
+			</button> */}
 			{query && <h2>Now you search: {query}</h2>}
 			{error && <h2>Something went wrong!! Try again</h2>}
+
 			<PostList openModal={handleSeeMoreInfo} posts={items} />
 
 			{loading && !items.length && <Loader />}
