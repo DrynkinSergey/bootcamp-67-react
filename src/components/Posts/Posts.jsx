@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useReducer, useRef, useState } from 'react'
 import { PostList } from './PostList'
 import { SearchForm } from './SearchForm'
 import s from './Posts.module.css'
@@ -7,37 +7,24 @@ import { fetchPosts, fetchPostsByQuery } from '../../services/api'
 import { Loader } from './Loader'
 import Modal from '../Modal/Modal'
 import { UserContext } from '../../context/ContextProvider'
+import { initialState, postReducer } from '../../reducer/postReducer'
 
 export const Posts = () => {
-	const [items, setItems] = useState([])
-	const [totalPosts, setTotalPosts] = useState(0)
-	const [skip, setSkip] = useState(0)
-	const [loading, setLoading] = useState(false)
-	const [error, setError] = useState(null)
-	const [query, setQuery] = useState('')
-	const [isOpen, setIsOpen] = useState(false)
-	const [content, setContent] = useState(null)
+	const [state, dispatch] = useReducer(postReducer, initialState)
+	const { items, skip, totalPosts, loading, error, query, isOpen, content } = state
 
 	const { logout, user } = useContext(UserContext)
 
-	const renderCountRef = useRef(0)
-
-	useEffect(() => {
-		renderCountRef.current += 1
-		console.log('Render count is:', renderCountRef.current)
-	})
-
 	const getData = useCallback(async () => {
 		try {
-			setLoading(true)
-			setError(null)
+			dispatch({ type: 'loading', payload: true })
+			dispatch({ type: 'error', payload: null })
 			const { posts, total } = query ? await fetchPostsByQuery({ skip, q: query }) : await fetchPosts({ skip })
-			setItems(prev => [...prev, ...posts])
-			setTotalPosts(total)
+			dispatch({ type: 'fetchData', payload: { posts, total } })
 		} catch (error) {
-			setError(error)
+			dispatch({ type: 'error', payload: error })
 		} finally {
-			setLoading(false)
+			dispatch({ type: 'loading', payload: false })
 		}
 	}, [query, skip])
 
@@ -46,22 +33,19 @@ export const Posts = () => {
 	}, [getData])
 
 	const handleToggleModal = () => {
-		setIsOpen(prev => !prev)
+		dispatch({ type: 'toggleModal' })
 	}
 
 	const handleSeeMoreInfo = content => {
-		setIsOpen(true)
-		setContent(content)
+		dispatch({ type: 'seeInfo', payload: content })
 	}
 
 	const handleSetQuery = query => {
-		setQuery(query)
-		setItems([])
-		setSkip(0)
+		dispatch({ type: 'changeQuery', payload: query })
 	}
 
 	const handleLoadMore = () => {
-		setSkip(prev => prev + 4)
+		dispatch({ type: 'loadMore' })
 	}
 	return (
 		<div>

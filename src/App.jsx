@@ -26,11 +26,11 @@ const App = () => {
 	return (
 		<>
 			{/* <Context auto='audi' /> */}
-			<Counter />
+			{/* <Counter /> */}
 			{/* <ColorPicker colors={colors} /> */}
 			{/* <TodoList /> */}
 			{/* <Employee /> */}
-			{/* <Posts /> */}
+			<Posts />
 		</>
 	)
 }
