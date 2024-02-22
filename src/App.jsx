@@ -9,6 +9,7 @@ import colors from './assets/colors.json'
 import { Context } from './components/Context/Context'
 import { ContextProvider, UserContext } from './context/ContextProvider'
 import { LoginForm } from './components/LoginForm/LoginForm'
+import { Form } from './components/Form/Form'
 
 export const MyContext = createContext()
 const contextValue = {
@@ -30,7 +31,8 @@ const App = () => {
 			{/* <ColorPicker colors={colors} /> */}
 			{/* <TodoList /> */}
 			{/* <Employee /> */}
-			<Posts />
+			{/* <Posts /> */}
+			<Form />
 		</>
 	)
 }
