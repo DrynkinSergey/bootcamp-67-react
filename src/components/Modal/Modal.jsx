@@ -1,22 +1,35 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import { CloseButton, ModalContent, ModalWrapper } from './Modal.styled'
 
 const Modal = ({ children, closeModal }) => {
-	useEffect(() => {
-		const handleKeyDown = e => {
+	const handleKeyDown = useCallback(
+		e => {
 			console.log(e.key)
 			if (e.key === 'Escape') {
 				// this.props.closeModal()
 				closeModal()
 			}
-		}
+		},
+		[closeModal]
+	)
+	//before
+	// 01000101001
+	// 01001010011
+	// after
+	// 01001010011
+	// 01001010011
+	// 01001010011
+	// 01001010011
+	// 01001010011
+
+	useEffect(() => {
 		document.addEventListener('keydown', handleKeyDown)
 
 		return () => {
 			console.log('Modal is closed')
 			document.removeEventListener('keydown', handleKeyDown)
 		}
-	}, [closeModal])
+	}, [closeModal, handleKeyDown])
 
 	const handleBackdropClick = e => {
 		if (e.target === e.currentTarget) {

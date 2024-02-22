@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { PostList } from './PostList'
 import { SearchForm } from './SearchForm'
 import s from './Posts.module.css'
@@ -27,22 +27,23 @@ export const Posts = () => {
 		console.log('Render count is:', renderCountRef.current)
 	})
 
-	useEffect(() => {
-		const getData = async () => {
-			try {
-				setLoading(true)
-				setError(null)
-				const { posts, total } = query ? await fetchPostsByQuery({ skip, q: query }) : await fetchPosts({ skip })
-				setItems(prev => [...prev, ...posts])
-				setTotalPosts(total)
-			} catch (error) {
-				setError(error)
-			} finally {
-				setLoading(false)
-			}
+	const getData = useCallback(async () => {
+		try {
+			setLoading(true)
+			setError(null)
+			const { posts, total } = query ? await fetchPostsByQuery({ skip, q: query }) : await fetchPosts({ skip })
+			setItems(prev => [...prev, ...posts])
+			setTotalPosts(total)
+		} catch (error) {
+			setError(error)
+		} finally {
+			setLoading(false)
 		}
-		getData()
 	}, [query, skip])
+
+	useEffect(() => {
+		getData()
+	}, [getData])
 
 	const handleToggleModal = () => {
 		setIsOpen(prev => !prev)

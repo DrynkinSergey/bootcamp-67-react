@@ -30,7 +30,7 @@ const App = () => {
 			{/* <ColorPicker colors={colors} /> */}
 			{/* <TodoList /> */}
 			{/* <Employee /> */}
-			{/* <Posts /> */}
+			<Posts />
 		</>
 	)
 }
