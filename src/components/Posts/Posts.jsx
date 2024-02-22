@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { PostList } from './PostList'
 import { SearchForm } from './SearchForm'
 import s from './Posts.module.css'
@@ -6,6 +6,7 @@ import clsx from 'clsx'
 import { fetchPosts, fetchPostsByQuery } from '../../services/api'
 import { Loader } from './Loader'
 import Modal from '../Modal/Modal'
+import { UserContext } from '../../context/ContextProvider'
 
 export const Posts = () => {
 	const [items, setItems] = useState([])
@@ -16,6 +17,8 @@ export const Posts = () => {
 	const [query, setQuery] = useState('')
 	const [isOpen, setIsOpen] = useState(false)
 	const [content, setContent] = useState(null)
+
+	const { logout, user } = useContext(UserContext)
 
 	const renderCountRef = useRef(0)
 
@@ -61,6 +64,10 @@ export const Posts = () => {
 	}
 	return (
 		<div>
+			<button onClick={logout} className={s.button}>
+				Logout
+			</button>
+			<h1>Hello, {user}!</h1>
 			<h1 className={s.title}>Posts</h1>
 			<SearchForm handleSetQuery={handleSetQuery} />
 
