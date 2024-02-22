@@ -3,10 +3,17 @@ import { StyledInput, StyledTodo, StyledTodoList } from './TodoList.styled'
 import todosData from './../../assets/todos.json'
 import React, { useState } from 'react'
 import { nanoid } from 'nanoid'
+import Modal from '../Modal/Modal'
+import { useModal } from '../../hooks/useModal'
 
 export const TodoList = () => {
 	const [todos, setTodos] = useState(todosData)
 	const [newTodoTitle, setNewTodoTitle] = useState('')
+
+	const { isOpen, close, open } = useModal()
+	// const [isOpen, setIsOpen] = useState(false)
+	// const closeModal = () => setIsOpen(false)
+	// const openModal = () => setIsOpen(true)
 
 	const handleToggleTodo = id => {
 		console.log(id)
@@ -40,6 +47,7 @@ export const TodoList = () => {
 	}
 	return (
 		<StyledTodoList>
+			<button onClick={open}>Open modal</button>
 			<div>
 				<StyledInput value={newTodoTitle} onChange={handleChangeNewTodo} type='text' />
 				<StyledButton onClick={handleAddTodo}>Add</StyledButton>
@@ -54,6 +62,11 @@ export const TodoList = () => {
 				</StyledTodo>
 			))}
 			<button onClick={() => setTodos([])}>Clear</button>
+			{isOpen && (
+				<Modal closeModal={close}>
+					<h1>Hello modal todo</h1>
+				</Modal>
+			)}
 		</StyledTodoList>
 	)
 }
