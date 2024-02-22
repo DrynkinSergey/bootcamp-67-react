@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useReducer, useState } from 'react'
 import { Flex, FlexContainer, StyledButton, StyledCounter } from './Counter.styled'
+import { counterReducer, initialState } from './reducer'
 
 export const Counter = () => {
-	const [counter, setCounter] = useState(1)
-	const [step, setStep] = useState(1)
+	const [state, dispatch] = useReducer(counterReducer, initialState)
 
 	const calcHardValue = () => {
 		console.log('Start calc')
@@ -14,47 +14,32 @@ export const Counter = () => {
 
 	// const result = calcHardValue()
 	const result = useMemo(() => calcHardValue(), [])
-	// Виконається еффект лише один раз, тому що пустий массив залежностей!
-	// analog componentDidMount
-	useEffect(() => {
-		console.log('Hello world')
-	}, [])
-	// Виконуєть перший раз, а також всі наступні, коли ми чіпаємо змінну з залежностей
-	// analog componentDidUpdate
-	useEffect(() => {
-		console.log('Counter was changed to:', counter)
-	}, [counter])
-
-	useEffect(() => {
-		console.log('Step was changed to:', step)
-	}, [step])
-
-	useEffect(() => {
-		console.log(counter + step)
-	}, [counter, step])
 
 	const handleChangeStep = e => {
 		// this.setState({ step: +e.target.value })
-		setStep(+e.target.value)
+		// setStep(+e.target.value)
+		dispatch({ type: 'changeStep', payload: +e.target.value })
 	}
 
 	const handlePlusClick = () => {
-		// this.setState(prev => ({ counter: prev.counter + prev.step }))
-		setCounter(prev => prev + step)
+		// setCounter(prev => prev + step)
+		dispatch({ type: 'increment' })
 	}
 	const handleMinusClick = () => {
-		setCounter(prev => prev - step)
+		// setCounter(prev => prev - step)
+		dispatch({ type: 'decrement' })
 	}
 	const handleResetClick = event => {
-		setStep(1)
-		setCounter(0)
+		dispatch({ type: 'reset' })
+		// setStep(1)
+		// setCounter(0)
 	}
 	return (
 		<FlexContainer>
 			<StyledCounter>
-				<h1>{counter}</h1>
+				<h1>{state.counter}</h1>
 				<h2>{result}</h2>
-				<input type='number' value={step} onChange={handleChangeStep} />
+				<input type='number' value={state.step} onChange={handleChangeStep} />
 				<Flex>
 					<StyledButton onClick={handleMinusClick}>minus</StyledButton>
 					<StyledButton onClick={handleResetClick}>reset</StyledButton>
