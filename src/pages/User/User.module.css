@@ -1,0 +1,16 @@
+.wrapper{
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+}
+.nestedWrapper{
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+}
+
+.navlinks{
+  display: flex;
+  gap:20px;
+  list-style: none;
+  color:black;
+}

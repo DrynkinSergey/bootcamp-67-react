@@ -9,6 +9,9 @@
   font-weight: bold;
   align-items: center;
 }
+.outletWrapper{
+  padding: 0 15px;
+}
 
 .navList {
   display: flex;

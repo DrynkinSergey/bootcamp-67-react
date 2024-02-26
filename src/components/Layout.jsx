@@ -9,7 +9,9 @@ export const Layout = () => {
 				<div>React Router</div>
 				<Nav />
 			</header>
-			<Outlet />
+			<div className={s.outletWrapper}>
+				<Outlet />
+			</div>
 		</div>
 	)
 }

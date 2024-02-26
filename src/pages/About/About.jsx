@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink, Outlet } from 'react-router-dom'
 
 const About = () => {
 	return (
@@ -19,6 +20,20 @@ const About = () => {
 				doloremque nesciunt reiciendis laborum quo architecto, excepturi, inventore dignissimos? Cumque ipsum dolor quia
 				aperiam.
 			</p>
+			<nav>
+				<ul>
+					<li>
+						<NavLink to='aim'>Aim</NavLink>
+					</li>
+					<li>
+						<NavLink to='company'>Company</NavLink>
+					</li>
+					<li>
+						<NavLink to='team'>Team</NavLink>
+					</li>
+				</ul>
+			</nav>
+			<Outlet />
 		</div>
 	)
 }
