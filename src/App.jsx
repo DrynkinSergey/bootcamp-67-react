@@ -12,6 +12,7 @@ import Company from './pages/About/Company'
 import Team from './pages/About/Team'
 import UserInfo from './pages/User/UserInfo'
 import UserPosts from './pages/User/UserPosts'
+import Register from './pages/Register/Register'
 export const App = () => {
 	return (
 		<div>
@@ -33,6 +34,7 @@ export const App = () => {
 					</Route>
 				</Route>
 
+				<Route path='/register' element={<Register />} />
 				<Route path='*' element={<NotFound />} />
 			</Routes>
 		</div>
