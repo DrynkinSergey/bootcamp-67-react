@@ -23,3 +23,8 @@ export const fetchPostsByQuery = async configParams => {
 	})
 	return data
 }
+
+export const fetchUsers = async () => {
+	const { data } = await axios.get('users?limit=20')
+	return data.users
+}
