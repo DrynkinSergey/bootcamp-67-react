@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useParams } from 'react-router-dom'
 import { fetchUsersById } from '../../services/api'
 import s from './User.module.css'
+import { useHttp } from '../../hooks/useHttp'
 
 const User = () => {
 	const { id } = useParams()
-	const [user, setUser] = useState(null)
-	const [error, setError] = useState(null)
-	useEffect(() => {
-		fetchUsersById(id)
-			.then(data => setUser(data))
-			.catch(err => setError(err.message))
-	}, [id])
-
+	const [user] = useHttp(fetchUsersById, id)
 	if (!user) {
 		return <h1>Loading...</h1>
 	}
