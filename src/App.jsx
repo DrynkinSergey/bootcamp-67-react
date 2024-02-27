@@ -1,21 +1,28 @@
-import React, { useContext } from 'react'
+import React, { lazy, useContext } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import Home from './pages/Home/Home'
-import About from './pages/About/About'
+// import Home from './pages/Home/Home'
+// import About from './pages/About/About'
 import NotFound from './pages/NotFound/NotFound'
 import { Layout } from './components/Layout'
 import './index.css'
 import Users from './pages/Users/Users'
 import User from './pages/User/User'
-import { Aim } from './pages/About/Aim'
-import Company from './pages/About/Company'
-import Team from './pages/About/Team'
+// import { Aim } from './pages/About/Aim'
+// import Company from './pages/About/Company'
+// import Team from './pages/About/Team'
 import UserInfo from './pages/User/UserInfo'
 import UserPosts from './pages/User/UserPosts'
 import Register from './pages/Register/Register'
 import { MyContext } from './context/ContextProvider'
 import { Posts } from './pages/Posts/Posts'
 import { SinglePost } from './pages/SinglePost/SinglePost'
+
+const Home = lazy(() => import('./pages/Home/Home'))
+const About = lazy(() => import('./pages/About/About'))
+const Company = lazy(() => import('./pages/About/Company'))
+const Aim = lazy(() => import('./pages/About/Aim'))
+const Team = lazy(() => import('./pages/About/Team'))
+
 export const App = () => {
 	const { isLoggedIn } = useContext(MyContext)
 	return isLoggedIn ? (

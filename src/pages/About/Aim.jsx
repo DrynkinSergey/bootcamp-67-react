@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Aim = () => {
+const Aim = () => {
 	return (
 		<div>
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste repellat, obcaecati cum incidunt, enim tempore
@@ -47,3 +47,5 @@ export const Aim = () => {
 		</div>
 	)
 }
+
+export default Aim

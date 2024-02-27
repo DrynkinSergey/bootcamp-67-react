@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 
 const About = () => {
@@ -33,7 +33,9 @@ const About = () => {
 					</li>
 				</ul>
 			</nav>
-			<Outlet />
+			<Suspense fallback={<h1>Loading about elements</h1>}>
+				<Outlet />
+			</Suspense>
 		</div>
 	)
 }
