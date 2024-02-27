@@ -1,11 +1,18 @@
-import { Link, NavLink, Outlet, useParams } from 'react-router-dom'
+import { Link, NavLink, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { fetchUsersById } from '../../services/api'
 import s from './User.module.css'
 import { useHttp } from '../../hooks/useHttp'
+import { useRef } from 'react'
 
 const User = () => {
-	const { id } = useParams()
-	const [user] = useHttp(fetchUsersById, id)
+	const { userId } = useParams()
+	const navigate = useNavigate()
+	// 1. Отримали локацію
+	const location = useLocation()
+	// 2. Створили реф, для зберігання між рендерами локації
+	const goBackRef = useRef(location.state?.from || '/users')
+	console.log(location)
+	const [user] = useHttp(fetchUsersById, userId)
 	if (!user) {
 		return <h1>Loading...</h1>
 	}
@@ -13,7 +20,9 @@ const User = () => {
 	return (
 		<div className={s.wrapper}>
 			<section>
-				<Link to='/users'>Go back</Link>
+				{/* 3. Використали реф */}
+				<Link to={goBackRef.current}>Go back</Link>
+				<button onClick={() => navigate(-1)}>Go back</button>
 				<h2>User info</h2>
 				<img src={user.image} alt={user.lastName} />
 				<h3>

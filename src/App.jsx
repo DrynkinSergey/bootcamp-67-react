@@ -20,6 +20,7 @@ export const App = () => {
 				<Route path='/' element={<Layout />}>
 					<Route index element={<Home />} />
 
+					{/* about/aim */}
 					<Route path='about' element={<About />}>
 						<Route index element={<h3>Please click on the links at top</h3>} />
 						<Route path='aim' element={<Aim />} />
@@ -28,7 +29,8 @@ export const App = () => {
 					</Route>
 
 					<Route path='users' element={<Users />} />
-					<Route path='users/:id' element={<User />}>
+					{/* users/71/posts */}
+					<Route path='users/:userId' element={<User />}>
 						<Route path='info' element={<UserInfo />} />
 						<Route path='posts' element={<UserPosts />} />
 					</Route>
