@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 export const useHttp = (fn, param) => {
 	const [data, setData] = useState(null)

@@ -17,6 +17,9 @@ export const Nav = () => {
 					<NavLink to='/users'>Users</NavLink>
 				</li>
 				<li>
+					<NavLink to='/posts'>Posts</NavLink>
+				</li>
+				<li>
 					{user} | <button onClick={logout}>Exit</button>
 				</li>
 			</ul>

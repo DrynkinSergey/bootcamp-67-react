@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 export const MyContext = createContext()
 
 export const ContextProvider = ({ children }) => {
-	const [user, setUser] = useState('')
+	const [user, setUser] = useState('Alex')
 	const login = username => {
 		// if (username !== 'Sergey') {
 		// 	return toast.error('Invalid user')

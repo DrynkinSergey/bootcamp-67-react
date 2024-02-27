@@ -14,6 +14,8 @@ import UserInfo from './pages/User/UserInfo'
 import UserPosts from './pages/User/UserPosts'
 import Register from './pages/Register/Register'
 import { MyContext } from './context/ContextProvider'
+import { Posts } from './pages/Posts/Posts'
+import { SinglePost } from './pages/SinglePost/SinglePost'
 export const App = () => {
 	const { isLoggedIn } = useContext(MyContext)
 	return isLoggedIn ? (
@@ -27,6 +29,11 @@ export const App = () => {
 					<Route path='aim' element={<Aim />} />
 					<Route path='company' element={<Company />} />
 					<Route path='team' element={<Team />} />
+				</Route>
+
+				<Route path='posts' element={<Posts />} />
+				<Route path='posts/:postId' element={<SinglePost />}>
+					<Route path='bio' element={<h1>Test bio</h1>} />
 				</Route>
 
 				<Route path='users' element={<Users />} />
@@ -43,7 +50,6 @@ export const App = () => {
 		<Routes>
 			<Route path='/register' element={<Register />} />
 			<Route path='/login' element={<Register />} />
-			<Route path='/' element={<h2>Welcome</h2>} />
 			{/* <Route path='*' element={<NotFound />} /> */}
 			<Route path='*' element={<Navigate to='/register' />} />
 		</Routes>
