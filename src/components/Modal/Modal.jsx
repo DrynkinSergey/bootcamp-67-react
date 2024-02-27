@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useRef } from 'react'
-import { CloseButton, ModalContent, ModalWrapper } from './Modal.styled'
 import ReactDOM from 'react-dom'
+
+import { CloseButton, ModalContent, ModalWrapper } from './Modal.styled'
+
 const modalRoot = document.querySelector('#modal')
 
 const Modal = ({ children, closeModal }) => {

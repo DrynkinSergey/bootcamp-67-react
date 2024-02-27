@@ -1,8 +1,11 @@
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import s from './Form.module.css'
-import { MyContext } from '../../context/ContextProvider'
 import { useNavigate } from 'react-router-dom'
+
+import { MyContext } from '../../context/ContextProvider'
+
+import s from './Form.module.css'
+
 const Form = () => {
 	const { register, reset, handleSubmit } = useForm()
 	const { login, isLoggedIn } = useContext(MyContext)

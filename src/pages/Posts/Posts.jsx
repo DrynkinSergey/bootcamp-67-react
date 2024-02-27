@@ -1,8 +1,10 @@
 import React, { useMemo } from 'react'
+import { Link, useLocation, useSearchParams } from 'react-router-dom'
+
+import { Form } from './Form'
+
 import { useHttp } from '../../hooks/useHttp'
 import { fetchPosts, fetchPostsByQuery } from '../../services/api'
-import { Form } from './Form'
-import { Link, useLocation, useSearchParams } from 'react-router-dom'
 
 export const Posts = () => {
 	const [searchParams, setSearchParams] = useSearchParams()

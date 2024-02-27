@@ -1,8 +1,9 @@
 import { Link, NavLink, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom'
-import { fetchUsersById } from '../../services/api'
-import s from './User.module.css'
-import { useHttp } from '../../hooks/useHttp'
 import { useRef } from 'react'
+
+import { fetchUsersById } from '../../services/api'
+import { useHttp } from '../../hooks/useHttp'
+import s from './User.module.css'
 
 const User = () => {
 	const { userId } = useParams()

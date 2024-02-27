@@ -1,5 +1,6 @@
-import { fetchUsers } from '../../services/api'
 import { Link, useLocation } from 'react-router-dom'
+
+import { fetchUsers } from '../../services/api'
 import { useHttp } from '../../hooks/useHttp'
 
 const Users = () => {

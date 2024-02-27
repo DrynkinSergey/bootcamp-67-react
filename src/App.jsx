@@ -1,21 +1,18 @@
 import React, { lazy, useContext } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-// import Home from './pages/Home/Home'
-// import About from './pages/About/About'
+
 import NotFound from './pages/NotFound/NotFound'
-import { Layout } from './components/Layout'
-import './index.css'
 import Users from './pages/Users/Users'
 import User from './pages/User/User'
-// import { Aim } from './pages/About/Aim'
-// import Company from './pages/About/Company'
-// import Team from './pages/About/Team'
 import UserInfo from './pages/User/UserInfo'
 import UserPosts from './pages/User/UserPosts'
 import Register from './pages/Register/Register'
-import { MyContext } from './context/ContextProvider'
 import { Posts } from './pages/Posts/Posts'
 import { SinglePost } from './pages/SinglePost/SinglePost'
+import { Layout } from './components/Layout'
+
+import { MyContext } from './context/ContextProvider'
+import './index.css'
 
 const Home = lazy(() => import('./pages/Home/Home'))
 const About = lazy(() => import('./pages/About/About'))
