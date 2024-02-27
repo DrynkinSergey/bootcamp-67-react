@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react'
 import { CloseButton, ModalContent, ModalWrapper } from './Modal.styled'
+import ReactDOM from 'react-dom'
+const modalRoot = document.querySelector('#modal')
 
 const Modal = ({ children, closeModal }) => {
 	const handleKeyDown = useCallback(
@@ -25,7 +27,7 @@ const Modal = ({ children, closeModal }) => {
 			closeModal()
 		}
 	}
-	return (
+	return ReactDOM.createPortal(
 		<ModalWrapper onClick={handleBackdropClick}>
 			<ModalContent>
 				<>
@@ -35,7 +37,8 @@ const Modal = ({ children, closeModal }) => {
 				<CloseButton onClick={closeModal}>×</CloseButton>
 				{children}
 			</ModalContent>
-		</ModalWrapper>
+		</ModalWrapper>,
+		modalRoot
 	)
 }
 
