@@ -9,6 +9,14 @@ body{
   padding: 0;
   margin: 0;
 }
+.btn{
+  background-color: teal;
+  color:white;
+  padding: 10px 20px;
+  margin-top: 10px;
+  display: block;
+  width: 200px;
+}
 .active{
   color:black !important;
   text-decoration: underline !important;

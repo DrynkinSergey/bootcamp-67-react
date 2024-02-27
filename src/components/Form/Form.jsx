@@ -1,44 +1,40 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-
+import s from './Form.module.css'
+import { MyContext } from '../../context/ContextProvider'
+import { useNavigate } from 'react-router-dom'
 const Form = () => {
 	const { register, reset, handleSubmit } = useForm()
+	const { login, isLoggedIn } = useContext(MyContext)
+
+	const navigate = useNavigate()
 
 	const submit = data => {
 		console.log(data)
+		login(data.name)
+		navigate('/users')
 		reset()
 	}
 
 	return (
-		<form onSubmit={handleSubmit(submit)}>
-			<h2>Register</h2>
-			<label>
-				Name
-				<input {...register('name', { required: true, minLength: 5, maxLength: 9 })} autoFocus />
-			</label>
-			<label>
-				Email
-				<input {...register('email')} />
-			</label>
-			<label>
-				Status
-				<input {...register('status')} />
-			</label>
-			<label>
-				Age
-				<input {...register('age')} />
-			</label>
-
-			<select {...register('currency')}>
-				<option value='UAH'>uah</option>
-				<option value='USD'>usd</option>
-			</select>
-			<label>
-				Password
-				<input {...register('password')} type='password' />
-			</label>
-			<button>Register</button>
-		</form>
+		<div className={s.wrapper}>
+			<form className={s.form} onSubmit={handleSubmit(submit)}>
+				<h2>Register</h2>
+				<label>
+					Name
+					<input
+						placeholder='Enter your name...'
+						{...register('name', { required: true, minLength: 5, maxLength: 9 })}
+						autoFocus
+					/>
+				</label>
+				<label>
+					Password
+					<input placeholder='Enter your pass...' {...register('password')} type='password' />
+				</label>
+				<button>Register</button>
+			</form>
+		</div>
 	)
 }
 

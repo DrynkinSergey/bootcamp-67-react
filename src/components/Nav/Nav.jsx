@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import s from './Nav.module.css'
+import { MyContext } from '../../context/ContextProvider'
 export const Nav = () => {
+	const { user, logout } = useContext(MyContext)
 	return (
 		<nav>
 			<ul className={s.navList}>
@@ -15,7 +17,7 @@ export const Nav = () => {
 					<NavLink to='/users'>Users</NavLink>
 				</li>
 				<li>
-					<NavLink to='/register'>Register</NavLink>
+					{user} | <button onClick={logout}>Exit</button>
 				</li>
 			</ul>
 		</nav>

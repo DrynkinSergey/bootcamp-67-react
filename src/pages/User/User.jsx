@@ -21,8 +21,10 @@ const User = () => {
 		<div className={s.wrapper}>
 			<section>
 				{/* 3. Використали реф */}
-				<Link to={goBackRef.current}>Go back</Link>
-				<button onClick={() => navigate(-1)}>Go back</button>
+				<Link className='btn' to={goBackRef.current}>
+					Go back
+				</Link>
+				{/* <button onClick={() => navigate(goBackRef.current)}>Go back</button> */}
 				<h2>User info</h2>
 				<img src={user.image} alt={user.lastName} />
 				<h3>
