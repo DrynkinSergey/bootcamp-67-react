@@ -1,0 +1,22 @@
+.item{
+  display: flex;
+  justify-content: space-between;
+  gap:10px;
+  padding: 15px 20px ;
+  border: 2px solid black;
+  border-radius: 8px;
+  box-shadow: 3px 3px 8px 2px gray;
+}
+.list{
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+  padding: 0;
+  max-width: 60%;
+  margin: 0 auto;
+}
+.formWrapper{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
