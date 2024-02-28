@@ -8,7 +8,7 @@ export const AddForm = () => {
 	const { register, handleSubmit, reset } = useForm()
 	const dispatch = useDispatch()
 	const submit = ({ title }) => {
-		const newTodo = { title, id: nanoid(), completed: false }
+		const newTodo = { title, id: nanoid(), completed: false, favorite: false }
 		console.log(newTodo)
 		dispatch(addTodo(newTodo))
 		reset()
