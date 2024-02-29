@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { TodoItem } from './TodoItem'
 import { useSelector } from 'react-redux'
-import { selectFilter, selectTodos } from '../../redux/todolist/selectors'
 import s from './TodoList.module.css'
 import { useModal } from '../../hooks/useModal'
 import Modal from '../Modal/Modal'
 import { EditForm } from './EditForm'
+import { selectTodos } from '../../redux/todolist/slice'
+import { selectFilter } from '../../redux/filterSlice'
 export const List = () => {
 	const { isOpen, toggle } = useModal()
 	const [content, setContent] = useState('')

@@ -1,13 +1,13 @@
 import React from 'react'
 import s from './TodoList.module.css'
 import { useDispatch } from 'react-redux'
-import { addToFav, removeTodo, toggleTodo } from '../../redux/todolist/actions'
 import { MdDeleteOutline } from 'react-icons/md'
 import { AiFillLike } from 'react-icons/ai'
 import { BiLike } from 'react-icons/bi'
 import { FaEdit } from 'react-icons/fa'
 
 import clsx from 'clsx'
+import { addToFav, removeTodo, toggleTodo } from '../../redux/todolist/slice'
 
 export const TodoItem = ({ title, completed, id, favorite, handleEditItem }) => {
 	const dispatch = useDispatch()

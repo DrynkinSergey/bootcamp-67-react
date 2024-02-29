@@ -1,9 +1,9 @@
 import React from 'react'
 import s from './TodoList.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { changeFilter } from '../../redux/todolist/actions'
-import { selectFilter } from '../../redux/todolist/selectors'
+
 import clsx from 'clsx'
+import { changeFilter, selectFilter } from '../../redux/filterSlice'
 const btns = ['all', 'active', 'completed', 'favorites']
 export const Filter = () => {
 	const dispatch = useDispatch()

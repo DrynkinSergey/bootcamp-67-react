@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import s from './TodoList.module.css'
-import { editTodo } from '../../redux/todolist/actions'
+import { editTodo } from '../../redux/todolist/slice'
 export const EditForm = ({ content, toggle }) => {
 	const { register, handleSubmit, reset } = useForm({
 		defaultValues: {
