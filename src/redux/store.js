@@ -4,6 +4,7 @@ import { todoReducer } from './todolist/slice'
 import { filterReducer } from './filterSlice'
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { userReducer } from './userSlice'
 
 const persistConfig = {
 	key: 'root',
@@ -26,6 +27,7 @@ export const store = configureStore({
 		counter: counterReducer,
 		todos: persistedReducer,
 		filter: persistedReducerFilter,
+		user: userReducer,
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({

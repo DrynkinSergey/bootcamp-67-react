@@ -12,11 +12,12 @@ const slice = createSlice({
 			item.completed = !item.completed
 		},
 		addTodo: {
-			prepare: title => {
+			prepare: data => {
 				return {
 					payload: {
-						title,
+						title: data.title,
 						id: nanoid(),
+						author: data.author,
 						completed: false,
 						favorite: false,
 						createdAt: new Date().toLocaleTimeString(),

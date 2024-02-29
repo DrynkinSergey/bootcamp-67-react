@@ -11,7 +11,7 @@ export const EditForm = ({ content, toggle }) => {
 	})
 	const dispatch = useDispatch()
 	const submit = data => {
-		dispatch(editTodo({ id: content.id, ...data }))
+		dispatch(editTodo({ ...content, ...data }))
 		toggle()
 		reset()
 	}
