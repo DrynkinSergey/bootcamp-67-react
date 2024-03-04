@@ -5,7 +5,7 @@ import { Filter } from './Filter'
 import { UserForm } from './UserForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectUser } from '../../redux/userSlice'
-import { fetchData, fetchDataThunk } from '../../redux/todolist/operations'
+import { fetchDataThunk } from '../../redux/todolist/operations'
 import { selectIsError, selectIsLoading } from '../../redux/todolist/slice'
 
 export const TodoList = () => {

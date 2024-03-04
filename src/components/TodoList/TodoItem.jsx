@@ -7,7 +7,7 @@ import { BiLike } from 'react-icons/bi'
 import { FaEdit } from 'react-icons/fa'
 
 import clsx from 'clsx'
-import { addToFav, removeTodo, toggleTodo } from '../../redux/todolist/slice'
+
 import { selectUser } from '../../redux/userSlice'
 import { addToFavThunk, deleteTodoThunk, toggleTodoThunk } from '../../redux/todolist/operations'
 

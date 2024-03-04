@@ -5,6 +5,7 @@ import { filterReducer } from './filterSlice'
 import { userReducer } from './userSlice'
 import logger from 'redux-logger'
 import { toast } from 'react-toastify'
+import { articlesReducer } from './articles/slice'
 
 // const myMiddleware = store => next => action => {
 // 	console.log(action)
@@ -20,6 +21,7 @@ export const store = configureStore({
 	reducer: {
 		todos: todoReducer,
 		filter: filterReducer,
+		articles: articlesReducer,
 		user: userReducer,
 	},
 

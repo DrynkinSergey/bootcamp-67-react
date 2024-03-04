@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { addTodo, editTodo, fetchIsDone, isError, isLoading, removeTodo, toggleTodo } from './slice'
+
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 axios.defaults.baseURL = 'https://65e584f3d7f0758a76e691a1.mockapi.io/'

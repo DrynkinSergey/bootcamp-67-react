@@ -1,9 +1,7 @@
-import { nanoid } from 'nanoid'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import s from './TodoList.module.css'
-import { addTodo } from '../../redux/todolist/slice'
 import { selectUser } from '../../redux/userSlice'
 import { addTodoThunk } from '../../redux/todolist/operations'
 export const AddForm = () => {
