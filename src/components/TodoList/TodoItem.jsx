@@ -9,7 +9,7 @@ import { FaEdit } from 'react-icons/fa'
 import clsx from 'clsx'
 import { addToFav, removeTodo, toggleTodo } from '../../redux/todolist/slice'
 import { selectUser } from '../../redux/userSlice'
-import { deleteTodoThunk, toggleTodoThunk } from '../../redux/todolist/operations'
+import { addToFavThunk, deleteTodoThunk, toggleTodoThunk } from '../../redux/todolist/operations'
 
 export const TodoItem = ({ title, author, createdAt, completed, id, favorite, handleEditItem }) => {
 	const dispatch = useDispatch()
@@ -19,7 +19,7 @@ export const TodoItem = ({ title, author, createdAt, completed, id, favorite, ha
 			<input
 				type='checkbox'
 				checked={completed}
-				onChange={() => dispatch(toggleTodoThunk({ title, author, completed, id, favorite, createdAt }))}
+				onChange={() => dispatch(toggleTodoThunk({ title, author, completed: !completed, id, favorite, createdAt }))}
 			/>
 			<p>{title}</p>
 			<p>Author: {author}</p>
@@ -29,7 +29,10 @@ export const TodoItem = ({ title, author, createdAt, completed, id, favorite, ha
 						<FaEdit size={32} />
 					</button>
 				)}
-				<button className={s.btn} onClick={() => dispatch(addToFav(id))}>
+				<button
+					className={s.btn}
+					onClick={() => dispatch(addToFavThunk({ title, author, completed, id, favorite: !favorite, createdAt }))}
+				>
 					{favorite ? <AiFillLike size={32} color='red' /> : <BiLike size={32} />}
 				</button>
 				{author === author && (
