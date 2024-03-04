@@ -2,8 +2,19 @@ import { createSlice, nanoid } from '@reduxjs/toolkit'
 
 const slice = createSlice({
 	name: 'todos',
-	initialState: { items: [] },
+	initialState: { items: [], loading: false, error: null },
 	reducers: {
+		fetchIsDone: (state, { payload }) => {
+			state.items = payload
+			state.loading = false
+		},
+		isLoading: (state, { payload }) => {
+			state.loading = true
+		},
+		isError: (state, { payload }) => {
+			state.error = payload
+			state.loading = false
+		},
 		removeTodo: (state, { payload }) => {
 			state.items = state.items.filter(item => item.id !== payload)
 		},
@@ -11,22 +22,8 @@ const slice = createSlice({
 			const item = state.items.find(item => item.id === payload)
 			item.completed = !item.completed
 		},
-		addTodo: {
-			prepare: data => {
-				return {
-					payload: {
-						title: data.title,
-						id: nanoid(),
-						author: data.author,
-						completed: false,
-						favorite: false,
-						createdAt: new Date().toLocaleTimeString(),
-					},
-				}
-			},
-			reducer: (state, { payload }) => {
-				state.items.push(payload)
-			},
+		addTodo: (state, { payload }) => {
+			state.items.push(payload)
 		},
 
 		editTodo: (state, { payload }) => {
@@ -40,9 +37,11 @@ const slice = createSlice({
 	},
 	selectors: {
 		selectTodos: state => state.items,
+		selectIsLoading: state => state.loading,
+		selectIsError: state => state.error,
 	},
 })
 
 export const todoReducer = slice.reducer
-export const { addToFav, addTodo, editTodo, removeTodo, toggleTodo } = slice.actions
-export const { selectTodos } = slice.selectors
+export const { addToFav, addTodo, editTodo, removeTodo, toggleTodo, isLoading, isError, fetchIsDone } = slice.actions
+export const { selectTodos, selectIsLoading, selectIsError } = slice.selectors

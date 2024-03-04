@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import s from './TodoList.module.css'
 import { addTodo } from '../../redux/todolist/slice'
 import { selectUser } from '../../redux/userSlice'
+import { addTodoThunk } from '../../redux/todolist/operations'
 export const AddForm = () => {
 	const { register, handleSubmit, reset } = useForm()
 	const user = useSelector(selectUser)
 	const dispatch = useDispatch()
 	const submit = ({ title }) => {
-		dispatch(addTodo({ title, author: user }))
+		dispatch(addTodoThunk({ title, author: user, createdAt: new Date().toLocaleTimeString() }))
 		reset()
 	}
 	return (
