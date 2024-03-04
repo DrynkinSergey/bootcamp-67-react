@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import s from './TodoList.module.css'
 import { editTodo } from '../../redux/todolist/slice'
+import { editTodoThunk } from '../../redux/todolist/operations'
 export const EditForm = ({ content, toggle }) => {
 	const { register, handleSubmit, reset } = useForm({
 		defaultValues: {
@@ -11,7 +12,7 @@ export const EditForm = ({ content, toggle }) => {
 	})
 	const dispatch = useDispatch()
 	const submit = data => {
-		dispatch(editTodo({ ...content, ...data }))
+		dispatch(editTodoThunk({ ...content, ...data }))
 		toggle()
 		reset()
 	}

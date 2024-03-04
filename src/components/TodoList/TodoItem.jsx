@@ -9,14 +9,18 @@ import { FaEdit } from 'react-icons/fa'
 import clsx from 'clsx'
 import { addToFav, removeTodo, toggleTodo } from '../../redux/todolist/slice'
 import { selectUser } from '../../redux/userSlice'
-import { deleteTodoThunk } from '../../redux/todolist/operations'
+import { deleteTodoThunk, toggleTodoThunk } from '../../redux/todolist/operations'
 
-export const TodoItem = ({ title, author, completed, id, favorite, handleEditItem }) => {
+export const TodoItem = ({ title, author, createdAt, completed, id, favorite, handleEditItem }) => {
 	const dispatch = useDispatch()
 	const user = useSelector(selectUser)
 	return (
 		<li className={clsx(s.item, favorite && s.liked)}>
-			<input type='checkbox' checked={completed} onChange={() => dispatch(toggleTodo(id))} />
+			<input
+				type='checkbox'
+				checked={completed}
+				onChange={() => dispatch(toggleTodoThunk({ title, author, completed, id, favorite, createdAt }))}
+			/>
 			<p>{title}</p>
 			<p>Author: {author}</p>
 			<div>

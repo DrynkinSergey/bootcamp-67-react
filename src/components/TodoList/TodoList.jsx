@@ -5,14 +5,14 @@ import { Filter } from './Filter'
 import { UserForm } from './UserForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectUser } from '../../redux/userSlice'
-import { fetchData } from '../../redux/todolist/operations'
+import { fetchData, fetchDataThunk } from '../../redux/todolist/operations'
 import { selectIsError, selectIsLoading } from '../../redux/todolist/slice'
 
 export const TodoList = () => {
 	const user = useSelector(selectUser)
 	const dispatch = useDispatch()
 	useEffect(() => {
-		dispatch(fetchData())
+		dispatch(fetchDataThunk())
 	}, [dispatch])
 	const error = useSelector(selectIsError)
 	const loading = useSelector(selectIsLoading)
