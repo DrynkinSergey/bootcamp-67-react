@@ -4,7 +4,7 @@ import { Shop } from './pages/Shop/Shop'
 import { Cart } from './pages/Cart/Cart'
 import { ProductDetails } from './pages/ProductDetails/ProductDetails'
 import { NotFound } from './pages/NotFound/NotFound'
-
+import './index.css'
 export const App = () => {
 	return (
 		<>

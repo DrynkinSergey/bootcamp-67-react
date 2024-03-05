@@ -1,0 +1,23 @@
+.header {
+  padding: 20px 15px;
+  background-color: teal;
+ 
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  nav{
+    display: flex;
+    gap:20px;
+    a{
+      color:white;
+      text-decoration: none;
+      
+    }
+  }
+}
+.logo{
+  color:white !important;
+  text-decoration: none !important;
+}
