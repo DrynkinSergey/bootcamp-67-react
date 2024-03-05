@@ -3,11 +3,15 @@ import { App } from './App'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { store } from './redux/store'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-	<BrowserRouter>
-		<App />
-		<ToastContainer autoClose={1500} />
-	</BrowserRouter>
+	<Provider store={store}>
+		<BrowserRouter>
+			<App />
+			<ToastContainer autoClose={1500} />
+		</BrowserRouter>{' '}
+	</Provider>
 )
