@@ -1,4 +1,4 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit'
+import { createSlice, isAnyOf, nanoid } from '@reduxjs/toolkit'
 import {
 	addToFavThunk,
 	addTodoThunk,
@@ -18,17 +18,8 @@ const slice = createSlice({
 	},
 	extraReducers: builder => {
 		builder
-			.addCase(fetchDataThunk.pending, state => {
-				state.loading = true
-				state.error = null
-			})
 			.addCase(fetchDataThunk.fulfilled, (state, { payload }) => {
 				state.items = payload
-				state.loading = false
-			})
-			.addCase(fetchDataThunk.rejected, (state, { payload }) => {
-				state.error = payload
-				state.loading = false
 			})
 			.addCase(deleteTodoThunk.fulfilled, (state, { payload }) => {
 				state.items = state.items.filter(item => item.id !== payload)
@@ -36,6 +27,7 @@ const slice = createSlice({
 			.addCase(addTodoThunk.fulfilled, (state, { payload }) => {
 				state.items.push(payload)
 			})
+
 			.addCase(toggleTodoThunk.fulfilled, (state, { payload }) => {
 				const itemIndex = state.items.findIndex(item => item.id === payload.id)
 				state.items.splice(itemIndex, 1, payload)
@@ -48,6 +40,30 @@ const slice = createSlice({
 				// const item = state.items.find(item => item.id === payload)
 				// item.favorite = !item.favorite
 				state.items = state.items.map(item => (item.id === payload ? { ...item, favorite: !item.favorite } : item))
+			})
+			.addMatcher(
+				isAnyOf(fetchDataThunk.pending, deleteTodoThunk.pending, addTodoThunk.pending),
+				(state, { payload }) => {
+					state.loading = true
+					state.error = null
+				}
+			)
+			.addMatcher(
+				isAnyOf(
+					fetchDataThunk.rejected,
+					deleteTodoThunk.rejected,
+					addTodoThunk.rejected,
+					addToFavThunk.rejected,
+					editTodoThunk.rejected,
+					toggleTodoThunk.rejected
+				),
+				(state, { payload }) => {
+					state.loading = false
+					state.error = payload
+				}
+			)
+			.addMatcher(isAnyOf(fetchDataThunk.fulfilled, deleteTodoThunk.fulfilled, addTodoThunk.fulfilled), state => {
+				state.loading = false
 			})
 	},
 	selectors: {

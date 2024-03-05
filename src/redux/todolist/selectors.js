@@ -42,6 +42,5 @@ export const selectUncompletedTodos = state => {
 
 export const selectUncompletedTodosMemo = createSelector([selectTodos], todos => {
 	console.log('Calculation is done!')
-
 	return todos.reduce((total, todo) => (!todo.completed ? total + 1 : total), 0)
 })
