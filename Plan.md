@@ -12,5 +12,5 @@ Plan "SHOP"
 10. Add feature to redux Shop
 11. Add mockapi resource
 12. Add axios.baseURL
-13. Create operations.js
+13. Create operations.jsa
 14. Create base logic: addToCart, deleteFromCart, fetchCart, changeQty
