@@ -17,6 +17,7 @@ import { articlesReducer } from './articles/slice'
 // 	next(action)
 // }
 
+// state.todos.items
 export const store = configureStore({
 	reducer: {
 		todos: todoReducer,

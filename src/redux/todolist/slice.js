@@ -10,8 +10,12 @@ import {
 
 const slice = createSlice({
 	name: 'todos',
-	initialState: { items: [], loading: false, error: null },
-
+	initialState: { items: [], loading: false, error: null, value: '' },
+	reducers: {
+		setValue: (state, action) => {
+			state.value = action.payload
+		},
+	},
 	extraReducers: builder => {
 		builder
 			.addCase(fetchDataThunk.pending, state => {
@@ -54,5 +58,5 @@ const slice = createSlice({
 })
 
 export const todoReducer = slice.reducer
-
+export const { setValue } = slice.actions
 export const { selectTodos, selectIsLoading, selectIsError } = slice.selectors
