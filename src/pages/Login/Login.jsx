@@ -25,7 +25,7 @@ export const Login = () => {
 	}
 	return (
 		<div>
-			<Form formType='login' onDataSubmit={handleSubmit} values={values} />
+			<Form formType='login' onDataSubmit={handleSubmit} values={{}} />
 		</div>
 	)
 }
