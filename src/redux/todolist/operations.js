@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { goitApi } from '../../axiosConfig/goitApi'
 
 axios.defaults.baseURL = 'https://65e584f3d7f0758a76e691a1.mockapi.io/'
 
@@ -12,7 +13,7 @@ axios.defaults.baseURL = 'https://65e584f3d7f0758a76e691a1.mockapi.io/'
 
 export const fetchDataThunk = createAsyncThunk('fetchData', async (_, thunkAPI) => {
 	try {
-		const { data } = await axios.get('/todos')
+		const { data } = await goitApi.get('/tasks')
 		return data
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error.message)
@@ -21,7 +22,7 @@ export const fetchDataThunk = createAsyncThunk('fetchData', async (_, thunkAPI) 
 
 export const deleteTodoThunk = createAsyncThunk('deleteTodo', async (id, thunkAPI) => {
 	try {
-		const { data } = await axios.delete(`/todos/${id}`)
+		const { data } = await goitApi.delete(`/tasks/${id}`)
 		return data.id
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error.message)
@@ -30,7 +31,7 @@ export const deleteTodoThunk = createAsyncThunk('deleteTodo', async (id, thunkAP
 
 export const addTodoThunk = createAsyncThunk('addTodo', async (body, thunkAPI) => {
 	try {
-		const { data } = await axios.post('/todos', body)
+		const { data } = await goitApi.post('/tasks', body)
 		return data
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error.message)
@@ -39,7 +40,7 @@ export const addTodoThunk = createAsyncThunk('addTodo', async (body, thunkAPI) =
 
 export const toggleTodoThunk = createAsyncThunk('toggleTodo', async (body, thunkAPI) => {
 	try {
-		const { data } = await axios.put(`/todos/${body.id}`, body)
+		const { data } = await goitApi.patch(`/tasks/${body.id}`, body)
 		return data
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error.message)
@@ -48,7 +49,7 @@ export const toggleTodoThunk = createAsyncThunk('toggleTodo', async (body, thunk
 
 export const editTodoThunk = createAsyncThunk('editTodo', async (body, thunkAPI) => {
 	try {
-		const { data } = await axios.put(`/todos/${body.id}`, body)
+		const { data } = await goitApi.patch(`/tasks/${body.id}`, body)
 		return data
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error.message)
@@ -57,7 +58,7 @@ export const editTodoThunk = createAsyncThunk('editTodo', async (body, thunkAPI)
 
 export const addToFavThunk = createAsyncThunk('addToFav', async (body, thunkAPI) => {
 	try {
-		const { data } = await axios.put(`/todos/${body.id}`, body)
+		const { data } = await goitApi.patch(`/tasks/${body.id}`, body)
 		return data.id
 	} catch (error) {
 		return thunkAPI.rejectWithValue(error.message)

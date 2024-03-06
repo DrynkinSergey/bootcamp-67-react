@@ -7,6 +7,7 @@ import {
 	fetchDataThunk,
 	toggleTodoThunk,
 } from './operations'
+import { logoutThunk } from '../auth/operations'
 
 const slice = createSlice({
 	name: 'todos',
@@ -26,6 +27,9 @@ const slice = createSlice({
 			})
 			.addCase(addTodoThunk.fulfilled, (state, { payload }) => {
 				state.items.push(payload)
+			})
+			.addCase(logoutThunk.fulfilled, state => {
+				return { items: [], loading: false, error: null, value: '' }
 			})
 
 			.addCase(toggleTodoThunk.fulfilled, (state, { payload }) => {

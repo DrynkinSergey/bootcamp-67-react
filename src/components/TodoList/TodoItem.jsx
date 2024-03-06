@@ -11,7 +11,7 @@ import clsx from 'clsx'
 import { selectUser } from '../../redux/userSlice'
 import { addToFavThunk, deleteTodoThunk, toggleTodoThunk } from '../../redux/todolist/operations'
 
-export const TodoItem = ({ title, author, createdAt, completed, id, favorite, handleEditItem }) => {
+export const TodoItem = ({ text, author, createdAt, completed, id, favorite, handleEditItem }) => {
 	const dispatch = useDispatch()
 	const user = useSelector(selectUser)
 	return (
@@ -19,10 +19,9 @@ export const TodoItem = ({ title, author, createdAt, completed, id, favorite, ha
 			<input
 				type='checkbox'
 				checked={completed}
-				onChange={() => dispatch(toggleTodoThunk({ title, author, completed: !completed, id, favorite, createdAt }))}
+				onChange={() => dispatch(toggleTodoThunk({ text, author, completed: !completed, id, favorite, createdAt }))}
 			/>
-			<p>{title}</p>
-			<p>Author: {author}</p>
+			<p>{text}</p>
 			<div>
 				{author === author && (
 					<button className={s.btn} onClick={handleEditItem}>
@@ -31,7 +30,7 @@ export const TodoItem = ({ title, author, createdAt, completed, id, favorite, ha
 				)}
 				<button
 					className={s.btn}
-					onClick={() => dispatch(addToFavThunk({ title, author, completed, id, favorite: !favorite, createdAt }))}
+					onClick={() => dispatch(addToFavThunk({ text, author, completed, id, favorite: !favorite, createdAt }))}
 				>
 					{favorite ? <AiFillLike size={32} color='red' /> : <BiLike size={32} />}
 				</button>

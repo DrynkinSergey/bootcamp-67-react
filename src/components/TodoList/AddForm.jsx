@@ -9,7 +9,7 @@ export const AddForm = () => {
 	const user = useSelector(selectUser)
 	const dispatch = useDispatch()
 	const submit = ({ title }) => {
-		dispatch(addTodoThunk({ title, author: user, createdAt: new Date().toLocaleTimeString() }))
+		dispatch(addTodoThunk({ text: title }))
 		reset()
 	}
 	return (
