@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { loginThunk } from '../../redux/auth/operations'
 import { toast } from 'react-toastify'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { loginSchema } from '../../schemas/loginSchema'
 
 export const Login = () => {
 	const dispatch = useDispatch()
@@ -24,9 +25,10 @@ export const Login = () => {
 		email: 'StepanUA@mail.com.ua',
 		password: 'StepanUA@mail.com.ua',
 	}
+
 	return (
 		<div>
-			<Form formType='login' onDataSubmit={handleSubmit} values={{}} />
+			<Form formType='login' schema={loginSchema} onDataSubmit={handleSubmit} values={{ values }} />
 		</div>
 	)
 }

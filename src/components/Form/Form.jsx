@@ -3,7 +3,9 @@ import s from './Form.module.css'
 import { Link } from 'react-router-dom'
 import { InputField } from './InputField'
 import { PassInputField } from './PassInputField'
-export const Form = ({ onDataSubmit, formType, values }) => {
+import { yupResolver } from '@hookform/resolvers/yup'
+
+export const Form = ({ onDataSubmit, formType, values, schema }) => {
 	const {
 		register,
 		reset,
@@ -11,6 +13,7 @@ export const Form = ({ onDataSubmit, formType, values }) => {
 		formState: { errors },
 	} = useForm({
 		defaultValues: values,
+		resolver: yupResolver(schema),
 	})
 
 	const submit = data => {
@@ -25,6 +28,7 @@ export const Form = ({ onDataSubmit, formType, values }) => {
 					<InputField register={register} errors={errors} label='Name:' placeholder='Enter name' name='name' />
 				)}
 				<InputField register={register} errors={errors} label='Email:' placeholder='Enter email' name='email' />
+
 				<PassInputField
 					register={register}
 					errors={errors}

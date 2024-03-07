@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@hookform/resolvers": "^3.3.4",
 		"@redux-devtools/extension": "^3.3.0",
 		"@reduxjs/toolkit": "^2.2.1",
 		"axios": "^1.6.7",
@@ -22,7 +23,8 @@
 		"redux": "^5.0.1",
 		"redux-logger": "^3.0.6",
 		"redux-persist": "^6.0.0",
-		"styled-components": "^6.1.8"
+		"styled-components": "^6.1.8",
+		"yup": "^1.4.0"
 	},
 	"scripts": {
 		"start": "react-scripts start",
