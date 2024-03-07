@@ -19,7 +19,6 @@ const Modal = ({ children, closeModal }) => {
 		document.addEventListener('keydown', handleKeyDown)
 
 		return () => {
-			console.log('Modal is closed')
 			document.removeEventListener('keydown', handleKeyDown)
 		}
 	}, [closeModal, handleKeyDown])

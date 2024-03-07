@@ -7,7 +7,6 @@ export const UserForm = () => {
 	const { register, handleSubmit, reset } = useForm()
 	const dispatch = useDispatch()
 	const submit = data => {
-		console.log(data)
 		dispatch(login(data.username))
 		reset()
 	}

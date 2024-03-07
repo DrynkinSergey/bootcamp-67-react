@@ -20,7 +20,6 @@ export const selectFilteredData = state => {
 }
 
 export const selectFilteredDataMemo = createSelector([selectFilter, selectTodos], (filter, todos) => {
-	console.log('Filter is done!')
 	switch (filter) {
 		case 'active':
 			return todos.filter(item => !item.completed)
@@ -41,6 +40,5 @@ export const selectUncompletedTodos = state => {
 }
 
 export const selectUncompletedTodosMemo = createSelector([selectTodos], todos => {
-	console.log('Calculation is done!')
 	return todos.reduce((total, todo) => (!todo.completed ? total + 1 : total), 0)
 })

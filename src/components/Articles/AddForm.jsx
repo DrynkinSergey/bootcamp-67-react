@@ -7,7 +7,6 @@ export const AddForm = () => {
 	const dispatch = useDispatch()
 	const { register, handleSubmit, reset } = useForm()
 	const submit = data => {
-		console.log(data)
 		dispatch(addArticleThunk(data))
 		reset()
 	}

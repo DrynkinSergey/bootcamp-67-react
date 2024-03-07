@@ -23,7 +23,11 @@ export const Navbar = () => {
 						<NavLink to='/login'>Login</NavLink>
 					</>
 				)}
-				{isLoggedIn && <button onClick={() => dispatch(logoutThunk())}>Exit</button>}
+				{isLoggedIn && (
+					<>
+						<button onClick={() => dispatch(logoutThunk())}>Exit</button>
+					</>
+				)}
 			</nav>
 		</div>
 	)

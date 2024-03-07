@@ -24,7 +24,25 @@ export const loginThunk = createAsyncThunk('login', async (credentials, thunkApi
 export const logoutThunk = createAsyncThunk('logout', async (_, thunkApi) => {
 	try {
 		await goitApi.post('users/logout')
-		// removeToken()
+		removeToken()
+	} catch (error) {
+		return thunkApi.rejectWithValue(error.message)
+	}
+})
+
+export const refreshThunk = createAsyncThunk('refresh', async (_, thunkApi) => {
+	// Отримуємо збережений токен з редакса
+	const savedToken = thunkApi.getState().auth.token
+	// Перевіряємо є токен, чи нема?
+	if (!savedToken) {
+		// Якщо нема = відправляємо реджект і прериваємо операцію
+		return thunkApi.rejectWithValue('Token is not exist!')
+	}
+	// якщо є, встановлюємо токен в наші хедери і робимо запит
+	try {
+		setToken(savedToken)
+		const { data } = await goitApi.get('/users/me')
+		return data
 	} catch (error) {
 		return thunkApi.rejectWithValue(error.message)
 	}

@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { loginThunk, logoutThunk, registerThunk } from './operations'
+import { createSlice, isAnyOf } from '@reduxjs/toolkit'
+import { loginThunk, logoutThunk, refreshThunk, registerThunk } from './operations'
 
 const initialState = {
 	user: {
@@ -10,6 +10,7 @@ const initialState = {
 	loading: false,
 	error: false,
 	isLoggedIn: false,
+	isRefresh: false,
 }
 
 const slice = createSlice({
@@ -19,26 +20,30 @@ const slice = createSlice({
 		selectUser: state => state.user,
 		selectIsLoggedIn: state => state.isLoggedIn,
 		selectToken: state => state.isLoggedIn,
+		selectIsRefresh: state => state.isRefresh,
 	},
 	extraReducers: builder => {
 		builder
-			.addCase(registerThunk.fulfilled, (state, { payload }) => {
-				state.user.name = payload.user.name
-				state.user.email = payload.user.email
-				state.token = payload.token
-				state.isLoggedIn = true
-			})
-			.addCase(loginThunk.fulfilled, (state, { payload }) => {
-				state.user.name = payload.user.name
-				state.user.email = payload.user.email
-				state.token = payload.token
-				state.isLoggedIn = true
-			})
 			.addCase(logoutThunk.fulfilled, state => {
 				return initialState
+			})
+			.addCase(refreshThunk.fulfilled, (state, { payload }) => {
+				state.user.name = payload.name
+				state.user.email = payload.email
+				state.isLoggedIn = true
+				state.isRefresh = false
+			})
+			.addCase(refreshThunk.pending, state => {
+				state.isRefresh = true
+			})
+			.addMatcher(isAnyOf(registerThunk.fulfilled, loginThunk.fulfilled), (state, { payload }) => {
+				state.user.name = payload.user.name
+				state.user.email = payload.user.email
+				state.token = payload.token
+				state.isLoggedIn = true
 			})
 	},
 })
 
 export const authReducer = slice.reducer
-export const { selectIsLoggedIn, selectUser, selectToken } = slice.selectors
+export const { selectIsLoggedIn, selectUser, selectToken, selectIsRefresh } = slice.selectors
