@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form } from '../../components/Form'
+import { Form } from '../../components/Form/Form'
 import { useDispatch } from 'react-redux'
 import { loginThunk } from '../../redux/auth/operations'
 import { toast } from 'react-toastify'
