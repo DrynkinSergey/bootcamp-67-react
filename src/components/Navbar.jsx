@@ -17,6 +17,7 @@ export const Navbar = () => {
 			<nav>
 				<NavLink to='/'>Home</NavLink>
 				<NavLink to='/todos'>Todos</NavLink>
+				<NavLink to='/todosRTK'>Todos RTK</NavLink>
 				{!isLoggedIn && (
 					<>
 						<NavLink to='/register'>Register</NavLink>

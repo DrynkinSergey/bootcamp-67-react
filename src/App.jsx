@@ -9,6 +9,7 @@ import { PrivateRoute } from './routes/PrivateRoute'
 import { PublicRoute } from './routes/PublicRoute'
 import { selectIsRefresh } from './redux/auth/slice'
 import { Preloader } from './components/Preloader'
+import { TodosRTK } from './pages/TodosRTK/TodosRTK'
 export const App = () => {
 	const isRefresh = useSelector(selectIsRefresh)
 	const dispatch = useDispatch()
@@ -29,7 +30,7 @@ export const App = () => {
 						</PrivateRoute>
 					}
 				/>
-
+				<Route path='todosRTK' element={<TodosRTK />} />
 				<Route
 					path='login'
 					element={
